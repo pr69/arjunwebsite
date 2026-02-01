@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Arjun K. Bhattarai – Specialist Biomedical Scientist (HCPC), NHS. Expertise in Haematology, Coagulation, Blood Transfusion, and Genomics.">
+    <title>Arjun K. Bhattarai | Specialist Biomedical Scientist</title>
+
+    <style>
+        :root {
+            --primary: #0f3c4c;
+            --secondary: #1e6f8c;
+            --accent: #eef6fa;
+            --text: #1f2933;
+            --muted: #6b7280;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: #fff;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            border-bottom: 1px solid #e5e7eb;
+            z-index: 20;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            padding: 0.8rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 3rem 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .card {
+            background: var(--accent);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 1.8rem;
+        }
+
+        /* LAYOUT */
+
+        .media-row {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .slider-box {
+            flex: 0 0 460px;
+            max-width: 460px;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        /* IMAGE SLIDER */
+
+        .image-slider {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #eef3f6;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.4s ease-in-out;
+            height: 100%;
+        }
+
+        .slides img {
+            width: 100%;
+            min-width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        /* HIDE BUTTONS IF ONLY ONE IMAGE */
+        .image-slider.single .prev,
+        .image-slider.single .next {
+            display: none;
+        }
+
+        .image-slider button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            border-left: 3px solid var(--primary);
+            padding-left: 40px;
+        }
+
+        .timeline-item {
+            margin-bottom: 2rem;
+        }
+
+        .timeline-content {
+            background: #f0f7fb;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        /* ENLARGE MODAL - 50% size */
+
+        #imgModal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ENLARGE MODAL - 50% size */
+        #imgModal .modal-content {
+            position: relative;
+            max-width: 50%;
+            max-height: 70%;
+            background: #fff;
+            border-radius: 12px;
+            padding: 10px;
+        }
+
+        #imgModal img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Close X button */
+
+        #imgModal .close-btn {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: #1e6f8c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Mobile */
+
+        @media(max-width:768px) {
+            #imgModal .modal-content {
+                max-width: 85%;
+                max-height: 80%;
+            }
+        }
+
+
+        /* MOBILE */
+
+        @media(max-width: 900px) {
+            .media-row {
+                flex-direction: column;
+            }
+
+            .slider-box {
+                max-width: 100%;
+            }
+
+            .image-slider {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Arjun K. Bhattarai</h1>
+        <p><strong>Specialist Biomedical Scientist (HCPC Registered)</strong></p>
+        <p>Haematology • Coagulation • Blood Transfusion • Genomics </p>
+        <p>Imperial College NHS Trust,London, United Kingdom | arjun.bhattarai@nhs.net | +44 7427 697192</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#training">Training</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#philanthropy">Philanthropy</a></li>
+            <li><a href="#registration">Registration</a></li>
+        </ul>
+    </nav>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>Professional Profile</h2>
+
+        <div class="card media-row">
+
+            <div class="slider-box">
+                <div class="image-slider">
+                    <button class="prev" onclick="moveSlide(this, -1)">❮</button>
+
+                    <div class="slides">
+                        <img src="images/profile.jpg" onclick="enlarge(this)">
+                    </div>
+
+                    <button class="next" onclick="moveSlide(this, 1)">❯</button>
+                </div>
+            </div>
+
+            <div class="content">
+                <p>
+                    HCPC-registered Specialist Biomedical Scientist with over twelve years of experience across
+                    haematology, coagulation, blood transfusion, genomics, and laboratory medicine gained in Nepal,
+                    India, and the UK.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-date">Oct 2024 – Present</div>
+                <div class="timeline-content card-box">
+                    <h3>Specialist Biomedical Scientist</h3>
+                    <p>North West London Pathology – Chelsea & Westminster Hospital</p>
+                    <ul>
+                        <li>Specialist haematology, coagulation, blood films, and transfusion practice</li>
+                        <li>Validation of complex diagnostic results and clinical reporting</li>
+                        <li>Microscopy and haemoparasite identification</li>
+                        <li>Kleihauer testing, antibody identification, DAT, crossmatching</li>
+                        <li>Transfusion reaction investigation and reporting</li>
+                        <li>Audit participation, SOP development, staff training</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jul 2022 – Oct 2024</div>
+                <div class="timeline-content card-box">
+                    <h3>Specialist Biomedical Scientist</h3>
+                    <p>Great Western Hospital NHS Foundation Trust</p>
+                    <ul>
+                        <li>Blood sciences, quality control, result validation</li>
+                        <li>Service continuity during high-demand periods and equipment breakdowns</li>
+                        <li>Staff training and laboratory IT support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">Jul 2009 – Mar 2011</div>
+                <div class="timeline-content card-box">
+                    <h3>Senior Medical Laboratory Technologist & Hospital Program Coordinator</h3>
+                    <p>Deukhuri Life Care Hospital, Nepal</p>
+                    <ul>
+                        <li>Diagnosis across blood science, clinical microbiology, histology, and cytology</li>
+                        <li>Blood transfusion, compatibility testing, microscopy, and SOP implementation</li>
+                        <li>Team leadership, training, and program coordination</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <h2>Education & Qualifications</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2015</div>
+                <div class="timeline-content card-box">
+                    <h3>MSc Healthcare (Genomics Specialised) – Distinction</h3>
+                    <p>University of West London</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2013</div>
+                <div class="timeline-content card-box">
+                    <h3>Postgraduate Diploma – Leadership & Management (Health & Social Care)</h3>
+                    <p>ABP UK</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2008</div>
+                <div class="timeline-content card-box">
+                    <h3>BSc Medical Laboratory Technology – Distinction</h3>
+                    <p>HNB Garhwal University</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2004</div>
+                <div class="timeline-content card-box">
+                    <h3>Higher Education (10+2) – First Class</h3>
+                    <p>New Horizon College, Butwal, Nepal</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-date">2002</div>
+                <div class="timeline-content card-box">
+                    <h3>School Leaving Certificate – First Class</h3>
+                    <p>Shree Madhyamik Bidyalaya, Mourighat, Dang, Nepal</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="training">
+        <h2>Specialist Training & CPD</h2>
+
+        <div class="card media-row">
+
+            <div class="slider-box">
+                <div class="image-slider">
+                    <button class="prev" onclick="moveSlide(this, -1)">❮</button>
+
+                    <div class="slides">
+                        <img src="images/training.jpg" onclick="enlarge(this)" alt="Malaria morphology training">
+                        <img src="images/training2.jpg" onclick="enlarge(this)" alt="Blood film workshop">
+                        <img src="images/training3.jpg" onclick="enlarge(this)" alt="IBMS congress participation">
+                    </div>
+
+                    <button class="next" onclick="moveSlide(this, 1)">❯</button>
+                </div>
+            </div>
+
+            <div class="content">
+                <ul>
+                    <li>Malaria Parasite Morphology – London School of Hygiene & Tropical Medicine</li>
+                    <li>Thrombophilia Screening and Venous Thrombosis – Hammersmith Hospital Reference Laboratory</li>
+                    <li>Blood Film Morphology – Imperial College Healthcare NHS Trust</li>
+                    <li>Handling of Atypical FBC Results – North West London Pathology</li>
+                    <li>Blood Parasitology (Trypanosomes, Microfilaria, Babesia, Plasmodium)</li>
+                    <li>Sickle Cell Disease Update – IBMS Congress</li>
+                    <li>Genomics Event Delegate – University of Cambridge</li>
+                    <li>Various LIMS and Pathology IT training events (Sunquest, WinPath, AMS)</li>
+                </ul>
+
+                <p>
+                    Continuous professional development has been a core aspect of my career. I regularly participate in
+                    specialist workshops, conferences, and laboratory-based practical courses to ensure my skills remain
+                    aligned with modern diagnostic standards and NHS best practices.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- RESEARCH -->
+    <section id="research">
+        <h2>Research & Publications</h2>
+
+        <div class="card media-row">
+
+            <div class="slider-box">
+                <div class="image-slider">
+                    <button class="prev" onclick="moveSlide(this, -1)">❮</button>
+
+                    <div class="slides">
+                        <img src="images/research.jpg" onclick="enlarge(this)" alt="Research presentation">
+
+                    </div>
+
+                    <button class="next" onclick="moveSlide(this, 1)">❯</button>
+                </div>
+            </div>
+
+            <div class="content">
+                <p>
+                    I have actively contributed to clinical and academic research throughout my career, particularly in
+                    areas related to genomics, public health, and transfusion medicine.
+                </p>
+
+                <ul>
+                    <li>Meta-analysis on maternal blood gene expression profiling</li>
+                    <li>Comparative studies of diabetes biomarkers between Western and South Asian populations</li>
+                    <li>Research and publication on the effectiveness of COVID-19 convalescent plasma therapy</li>
+                    <li>Experience in data collection, statistical analysis, and academic writing</li>
+                    <li>Collaboration with multidisciplinary clinical and research teams</li>
+                </ul>
+
+                <p>
+                    My research experience has strengthened my analytical thinking, critical appraisal skills, and
+                    understanding of evidence-based laboratory practice. I remain committed to contributing to further
+                    research initiatives within the NHS and academic partnerships.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- PHILANTHROPY -->
+    <section id="philanthropy">
+        <h2>Philanthropy & Social Impact</h2>
+        <div class="card media-row">
+
+            <!-- LEFT SIDE: Instagram Style Slider -->
+            <div class="slider-box">
+                <div class="image-slider">
+                    <button class="prev" onclick="moveSlide(this, -1)">❮</button>
+
+                    <div class="slides">
+                        <img src="images/edutrust1.jpg" alt="Gallery image 1">
+                        <img src="images/edutrust2.jpg" alt="Gallery image 2">
+                        <img src="images/edutrust3.jpg" alt="Gallery image 3">
+                    </div>
+
+                    <button class="next" onclick="moveSlide(this, 1)">❯</button>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE: Text -->
+            <div class="content">
+                <p>
+                    Inspired by my upbringing in Arghakhanchi, Nepal, I established a school fund worth 100,000 rupees
+                    at Shree Prabhakar Secondary School to support local students’ education and opportunities. Growing
+                    up in this community, I witnessed firsthand the challenges many children face in accessing quality
+                    learning resources. This fund aims to provide scholarships, learning materials, and essential
+                    support to empower students to pursue their academic dreams. Giving back to the place that shaped me
+                    has been both a personal mission and a way to create lasting impact for future generations in
+                    Arghakhanchi
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- REGISTRATION -->
+    <section id="registration">
+        <h2>Professional Registration</h2>
+        <div class="grid">
+            <div class="card">
+                <strong>HCPC – Biomedical Scientist</strong><br>
+                Registration No: BS71951<br>
+                Valid until: 30/11/2027
+            </div>
+            <div class="card">
+                <strong>Nepal Health Professional Council</strong><br>
+                Medical Laboratory Technologist<br>
+                Reg No: NHPC-435
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 Arjun K. Bhattarai • Specialist Biomedical Scientist • NHS
+    </footer>
+
+    <script>
+
+        function moveSlide(btn, direction) {
+            const slider = btn.parentElement;
+            const slides = slider.querySelector(".slides");
+            const images = slides.querySelectorAll("img");
+
+            if (images.length <= 1) {
+                slider.classList.add("single");
+                return;
+            }
+
+            let index = parseInt(slides.getAttribute("data-index")) || 0;
+
+            index += direction;
+
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+
+            slides.style.transform = "translateX(" + (-index * 100) + "%)";
+            slides.setAttribute("data-index", index);
+        }
+
+        // ENLARGE FUNCTION - works for ALL images
+        function enlarge(img) {
+            const modal = document.getElementById("imgModal");
+            const modalImg = document.getElementById("modalImg");
+
+            modal.style.display = "flex";
+            modalImg.src = img.src;
+        }
+
+        function closeModal() {
+            document.getElementById("imgModal").style.display = "none";
+        }
+
+        // Auto-enable enlarge on ALL slider images
+        window.onload = function () {
+
+            // Detect single image sliders
+            document.querySelectorAll(".image-slider").forEach(slider => {
+                const imgs = slider.querySelectorAll("img");
+                if (imgs.length === 1) {
+                    slider.classList.add("single");
+                }
+            });
+
+            // Attach enlarge to EVERY image automatically
+            document.querySelectorAll(".slides img").forEach(img => {
+                img.addEventListener("click", function () {
+                    enlarge(this);
+                });
+            });
+        }
+
+    </script>
+
+    <div id="imgModal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">✕</button>
+            <img id="modalImg">
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
